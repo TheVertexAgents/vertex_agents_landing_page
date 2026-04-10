@@ -15,7 +15,7 @@ export default function BlogSection() {
            viewport={{ once: true }}
            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-purple/20 bg-brand-purple/5 mb-4"
         >
-          <BookOpen className="w-3 h-3 text-brand-purple" />
+          <BookOpen className="w-3 h-3 text-brand-purple" aria-hidden="true" />
           <span className="font-tech text-[10px] text-brand-purple tracking-widest uppercase">Research_&_Insights</span>
         </motion.div>
         
@@ -24,7 +24,7 @@ export default function BlogSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6"
+          className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6 uppercase"
         >
           Latest from the <span className="text-brand-purple">Sentinel Blog</span>
         </motion.h2>
@@ -34,7 +34,7 @@ export default function BlogSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-slate-400 max-w-2xl text-lg mb-8"
+          className="text-slate-400 max-w-2xl text-lg mb-8 uppercase"
         >
           Deep dives into AI safety, cryptographic standards, and the future of verifiable autonomous agents.
         </motion.p>
@@ -53,8 +53,8 @@ export default function BlogSection() {
             { title: "Kraken MCP Integration", desc: "Secure multi-agent orchestration using the Model Context Protocol." }
           ].map((topic, i) => (
             <div key={i} className="p-4 rounded-lg bg-white/5 border border-white/10">
-              <h4 className="font-bold text-brand-purple text-sm mb-1">{topic.title}</h4>
-              <p className="text-slate-500 text-[10px] leading-tight">{topic.desc}</p>
+              <h4 className="font-bold text-brand-purple text-sm mb-1 uppercase">{topic.title}</h4>
+              <p className="text-slate-500 text-[10px] leading-tight uppercase">{topic.desc}</p>
             </div>
           ))}
         </motion.div>
@@ -65,39 +65,40 @@ export default function BlogSection() {
           <Link 
             key={post.id}
             href={`/blog/${post.slug}`}
-            className="block h-full"
+            className="block h-full group"
+            aria-label={`Read blog post: ${post.title}`}
           >
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group relative flex flex-col h-full bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 hover:border-brand-purple/30 transition-all duration-300"
+              className="relative flex flex-col h-full bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 hover:border-brand-purple/30 transition-all duration-300"
             >
               <div className="p-8 flex flex-col h-full">
                 <div className="flex items-center gap-4 mb-6 text-[10px] font-tech text-slate-500">
                   <div className="flex items-center gap-1">
-                    <Calendar className="w-3 h-3" />
+                    <Calendar className="w-3 h-3" aria-hidden="true" />
                     {post.date}
                   </div>
                   <div className="flex items-center gap-1">
-                    <User className="w-3 h-3" />
+                    <User className="w-3 h-3" aria-hidden="true" />
                     {post.author}
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-brand-purple transition-colors line-clamp-2">
+                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-brand-purple transition-colors line-clamp-2 uppercase">
                   {post.title}
                 </h3>
 
-                <p className="text-slate-400 text-sm leading-relaxed mb-8 grow">
+                <p className="text-slate-400 text-sm leading-relaxed mb-8 grow uppercase opacity-80 group-hover:opacity-100 transition-opacity">
                   {post.excerpt}
                 </p>
 
                 <div className="flex items-center justify-between mt-auto">
                   <div className="flex gap-2">
                     {post.tags.map(tag => (
-                      <span key={tag} className="px-2 py-0.5 rounded-sm bg-brand-purple/10 border border-brand-purple/20 text-brand-purple text-[9px] font-tech">
+                      <span key={tag} className="px-2 py-0.5 rounded-sm bg-brand-purple/10 border border-brand-purple/20 text-brand-purple text-[9px] font-tech uppercase">
                         {tag}
                       </span>
                     ))}

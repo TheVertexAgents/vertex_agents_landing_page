@@ -2,9 +2,59 @@
 
 import { useEffect, useRef } from "react";
 
+interface MouseState {
+  x: number;
+  y: number;
+  active: boolean;
+}
+
+class ParticleNode {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  size: number;
+  color: string;
+  pulse: number;
+
+  constructor(w: number, h: number) {
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.vx = (Math.random() - 0.5) * 0.15; // Slowed down
+    this.vy = (Math.random() - 0.5) * 0.15; // Slowed down
+    this.size = Math.random() * 1.5 + 0.5;
+    this.color = Math.random() > 0.5 ? "0, 240, 255" : "139, 92, 246";
+    this.pulse = Math.random() * Math.PI * 2;
+  }
+
+  update(w: number, h: number) {
+    this.pulse += 0.02; // Slow pulse
+    this.x += this.vx;
+    this.y += this.vy;
+
+    if (this.x < 0 || this.x > w) this.vx *= -1;
+    if (this.y < 0 || this.y > h) this.vy *= -1;
+  }
+
+  draw(ctx: CanvasRenderingContext2D) {
+    const glow = Math.sin(this.pulse) * 0.5 + 0.5;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${this.color}, ${0.1 + glow * 0.2})`; // Lower opacity
+    ctx.fill();
+
+    // Very faint ring
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+    ctx.strokeStyle = `rgba(${this.color}, ${0.05 * (1 - glow)})`;
+    ctx.lineWidth = 0.5;
+    ctx.stroke();
+  }
+}
+
 export default function ParticleCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mouseRef = useRef({ x: 0, y: 0, active: false });
+  const mouseRef = useRef<MouseState>({ x: 0, y: 0, active: false });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -15,52 +65,8 @@ export default function ParticleCanvas() {
 
     let animationFrameId: number;
     const nodeCount = 30; // Fewer particles
-    const nodes: Node[] = [];
+    const nodes: ParticleNode[] = [];
     const connectionDistance = 150;
-
-    class Node {
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      size: number;
-      color: string;
-      pulse: number;
-
-      constructor(w: number, h: number) {
-        this.x = Math.random() * w;
-        this.y = Math.random() * h;
-        this.vx = (Math.random() - 0.5) * 0.15; // Slowed down
-        this.vy = (Math.random() - 0.5) * 0.15; // Slowed down
-        this.size = Math.random() * 1.5 + 0.5;
-        this.color = Math.random() > 0.5 ? "0, 240, 255" : "139, 92, 246";
-        this.pulse = Math.random() * Math.PI * 2;
-      }
-
-      update(w: number, h: number, mouse: any) {
-        this.pulse += 0.02; // Slow pulse
-        this.x += this.vx;
-        this.y += this.vy;
-
-        if (this.x < 0 || this.x > w) this.vx *= -1;
-        if (this.y < 0 || this.y > h) this.vy *= -1;
-      }
-
-      draw(ctx: CanvasRenderingContext2D) {
-        const glow = Math.sin(this.pulse) * 0.5 + 0.5;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${this.color}, ${0.1 + glow * 0.2})`; // Lower opacity
-        ctx.fill();
-
-        // Very faint ring
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(${this.color}, ${0.05 * (1 - glow)})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-      }
-    }
 
     const drawGrid = (w: number, h: number) => {
       ctx.strokeStyle = "rgba(0, 240, 255, 0.05)"; // Slightly more visible grid
@@ -86,7 +92,7 @@ export default function ParticleCanvas() {
       canvas.height = window.innerHeight;
       nodes.length = 0;
       for (let i = 0; i < nodeCount; i++) {
-        nodes.push(new Node(canvas.width, canvas.height));
+        nodes.push(new ParticleNode(canvas.width, canvas.height));
       }
     };
 
@@ -96,7 +102,7 @@ export default function ParticleCanvas() {
       drawGrid(canvas.width, canvas.height);
 
       nodes.forEach(node => {
-        node.update(canvas.width, canvas.height, mouseRef.current);
+        node.update(canvas.width, canvas.height);
         node.draw(ctx);
       });
 
