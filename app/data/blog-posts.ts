@@ -13,9 +13,9 @@ export interface BlogPost {
 export const BLOG_POSTS: BlogPost[] = [
   {
     id: 1,
-    slug: "rogue-agent-guardrails",
+    slug: "rise-of-the-rogue-agent",
     title: "Rise of the Rogue Agent: Why AI Trading Needs Verifiable Guardrails",
-    excerpt: "Exploring critical security failure modes for autonomous trading agents: AI hallucinations, model compromise, and the advisory gap in crypto risk management.",
+    excerpt: "Exploring the critical failure modes for autonomous trading agents: AI hallucinations, model compromise, and the advisory gap in crypto risk management.",
     date: "April 9, 2026",
     author: "Vertex Sentinel Team",
     tags: ["AI Trading Security", "DeFi Safety", "Agentic AI", "On-Chain Guardrails"],
@@ -23,9 +23,9 @@ export const BLOG_POSTS: BlogPost[] = [
     content: `
       <p>As autonomous AI agents now manage over $1 billion in on-chain assets (with projections exceeding $100 billion by 2028), the surface area for catastrophic failure has shifted from human error to algorithmic instability. The “Rogue Agent” problem isn’t science fiction—it’s a documented, multi-vector security challenge that current DeFi infrastructure remains ill-equipped to handle. Real-world incidents in 2025–2026 have already produced $45 million+ breaches tied directly to AI trading agent vulnerabilities, alongside high-profile cases of agents depositing into honeypots, misrouting funds due to state misinterpretation, or spiraling into costly recursive loops.</p>
       
-      <div class="my-12 rounded-xl overflow-hidden border border-white/10 shadow-2xl">
-        <img src="/EIP-712.png" alt="EIP-712 Guardrails" class="w-full h-auto" />
-        <p class="text-center text-xs text-slate-500 mt-4 italic font-tech uppercase tracking-widest">Fig 1.0: EIP-712 Typed Signature Verification Flow</p>
+      <div class="my-12 rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-white/5">
+        <img src="/rogue-agent-bridge.png" alt="Vertex Sentinel Guardrails" class="w-full h-auto" />
+        <p class="text-center text-xs text-slate-500 mt-4 italic font-tech uppercase tracking-widest">Fig 1.0: Vertex Sentinel Guardrails</p>
       </div>
 
       <h2 class="text-white text-2xl font-bold mt-12 mb-6 uppercase tracking-tight">The Three Pillars of Agent Failure</h2>
@@ -51,26 +51,26 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 2,
-    slug: "ai-execution-security-kraken-basic",
-    title: "AI Execution Security: Bridging LLMs to Kraken via MCP and Secure CLI",
-    excerpt: "Securing the interface between Large Language Models and live exchanges using the Model Context Protocol (MCP) and isolated key management systems.",
-    date: "April 11, 2026",
-    author: "Vertex Engineering",
-    tags: ["Kraken CLI", "MCP Security", "Key Isolation"],
+    slug: "deep-dive-into-erc-8004",
+    title: "Deep Dive into ERC-8004: Standardizing Verifiable AI Intent on Ethereum",
+    excerpt: "Standardization is the bedrock of interoperability. ERC-8004 provides the framework for Verifiable Intent, allowing AI agents to move seamlessly across the Ethereum ecosystem.",
+    date: "April 10, 2026",
+    author: "Vertex Sentinel Team",
+    tags: ["ERC-8004", "Ethereum Protocol", "Standardization"],
     readTime: "4 min read",
     content: `
-      <p>Connecting a Large Language Model directly to an exchange API is like handing a blank check to a genius toddler. It's powerful, but dangerous. At Vertex, we've developed a secure bridge using the Model Context Protocol (MCP) to ensure execution remains isolated from the model's "thinking" process.</p>
+      <p>Standardization is the bedrock of interoperability. For AI agents to move seamlessly across the Ethereum ecosystem, we need a universal way to define what an agent is and what it is allowed to do. ERC-8004 provides the framework for this "Verifiable Intent."</p>
 
-      <div class="my-12 rounded-xl overflow-hidden border border-white/10 bg-black/50 p-4">
-        <img src="/genkit.png" alt="MCP Security Architecture" class="w-full h-auto opacity-70" />
-        <p class="text-center text-xs text-slate-500 mt-4 italic font-tech uppercase tracking-widest">Fig 2.0: MCP Stateless Execution Bridge</p>
+      <div class="my-12 rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-white/5">
+        <img src="/EIP-712.png" alt="EIP-712 Typed Signature Verification" class="w-full h-auto" />
+        <p class="text-center text-xs text-slate-500 mt-4 italic font-tech uppercase tracking-widest">Fig 2.0: EIP-712 Typed Signature Verification Flow</p>
       </div>
 
-      <h2 class="text-white text-2xl font-bold mt-12 mb-6 uppercase tracking-tight">The MCP Advantage</h2>
-      <p>MCP allows us to expose limited, stateless tools to the LLM. Instead of the model having access to API keys, it simply requests an action from the MCP Server. The server verifies the request against the Sentinel Guardrails before signing the actual transaction with Kraken.</p>
+      <h2 class="text-white text-2xl font-bold mt-12 mb-6 uppercase tracking-tight">Identity Meets Intent</h2>
+      <p>ERC-8004 introduces a standard for signing agent actions. Using EIP-712 typed data, an agent can present a cryptographically signed "Intent" that specifies exactly which assets it wants to move and under what conditions. This signature is then verified against a registered Agent Profile on the Sentinel Layer.</p>
 
-      <h2 class="text-white text-2xl font-bold mt-12 mb-6 uppercase tracking-tight">Hardware-Level Isolation</h2>
-      <p>By using isolated key management systems (KMS), the actual execution keys never touch the environment where the AI model is running. This creates a hard physical barrier between the intelligence layer and the value-transfer layer.</p>
+      <h2 class="text-white text-2xl font-bold mt-12 mb-6 uppercase tracking-tight">Why It Matters for Institutions</h2>
+      <p>Institutional liquidity requires absolute certainty. By adopting ERC-8004, Vertex Sentinel allows institutions to set granular permissions—such as "Max Slippage 0.5%" or "Only Trade WBTC/ETH"—that are enforced at the protocol level, not just the application level.</p>
     `
   },
   {
