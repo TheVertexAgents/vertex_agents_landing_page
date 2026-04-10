@@ -16,20 +16,40 @@ export default function BlogPostPage() {
     return (
       <main className="min-h-screen bg-brand-dark flex flex-col items-center justify-center p-6 text-center">
         <Shield className="w-16 h-16 text-brand-purple mb-6 animate-pulse" />
-        <h1 className="text-2xl font-tech text-white mb-4">404: POST_NOT_FOUND</h1>
-        <p className="text-slate-400 mb-8 max-w-md">The requested intel has been purged or moved to a higher clearance level.</p>
-        <Link href="/" className="px-6 py-2 rounded-sm bg-brand-purple/10 border border-brand-purple/30 text-brand-purple font-tech text-xs hover:bg-brand-purple/20 transition-all">
+        <h1 className="text-2xl font-tech text-white mb-4 uppercase">404: POST_NOT_FOUND</h1>
+        <p className="text-slate-400 mb-8 max-w-md uppercase">The requested intel has been purged or moved to a higher clearance level.</p>
+        <Link href="/" className="px-6 py-2 rounded-sm bg-brand-purple/10 border border-brand-purple/30 text-brand-purple font-tech text-xs hover:bg-brand-purple/20 transition-all uppercase">
           RETURN_TO_BASE
         </Link>
       </main>
     );
   }
 
+  // Schema.org Structured Data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.excerpt,
+    "author": {
+      "@type": "Organization",
+      "name": "Vertex Sentinel Team"
+    },
+    "datePublished": new Date(post.date).toISOString(),
+    "image": "https://sentinel.vertexagents.ai/web-app-manifest-512x512.png",
+  };
+
   return (
     <main className="min-h-screen bg-brand-dark flex flex-col pt-24 pb-12">
       <Header />
       
-      <article className="max-w-4xl mx-auto px-6 w-full">
+      {/* Dynamic SEO Tags for Client Component */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      <article className="max-w-4xl mx-auto px-6 w-full relative z-10">
         {/* Navigation */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -52,15 +72,15 @@ export default function BlogPostPage() {
             animate={{ opacity: 1, y: 0 }}
             className="flex flex-wrap gap-4 items-center mb-6 text-[10px] font-tech text-slate-500"
           >
-            <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/5 border border-white/10 uppercase tracking-tighter">
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 uppercase tracking-tighter">
               <Calendar className="w-3 h-3" />
               {post.date}
             </div>
-            <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/5 border border-white/10 uppercase tracking-tighter">
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 uppercase tracking-tighter">
               <User className="w-3 h-3" />
               {post.author}
             </div>
-            <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/5 border border-white/10 uppercase tracking-tighter text-brand-purple">
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 uppercase tracking-tighter text-brand-purple">
               <Clock className="w-3 h-3" />
               {post.readTime}
             </div>
@@ -70,7 +90,7 @@ export default function BlogPostPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight tracking-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight tracking-tight uppercase"
           >
             {post.title}
           </motion.h1>
@@ -79,10 +99,10 @@ export default function BlogPostPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="flex gap-2 mb-12"
+            className="flex flex-wrap gap-2 mb-12"
           >
             {post.tags.map(tag => (
-              <span key={tag} className="px-3 py-1 rounded-sm bg-brand-purple/10 border border-brand-purple/20 text-brand-purple text-[10px] font-tech">
+              <span key={tag} className="px-3 py-1 rounded-sm bg-brand-purple/10 border border-brand-purple/20 text-brand-purple text-[10px] font-tech uppercase tracking-widest">
                 {tag}
               </span>
             ))}
@@ -97,7 +117,7 @@ export default function BlogPostPage() {
           className="prose prose-invert prose-brand max-w-none"
         >
           <div 
-            className="text-slate-300 text-lg leading-relaxed flex flex-col gap-6 font-sans"
+            className="text-slate-300 text-lg md:text-xl leading-relaxed flex flex-col gap-8 font-sans"
             dangerouslySetInnerHTML={{ __html: post.content }} 
           />
         </motion.div>
@@ -113,9 +133,14 @@ export default function BlogPostPage() {
             <h4 className="text-white font-tech text-xs tracking-widest uppercase mb-4">Share_Intel</h4>
             <div className="flex gap-4">
                {/* Just placeholders for share buttons */}
-               <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-brand-cyan/50 hover:bg-brand-cyan/10 transition-all cursor-pointer">
-                  <span className="text-white font-tech text-[10px]">X</span>
-               </div>
+               <a
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-brand-cyan/50 hover:bg-brand-cyan/10 transition-all cursor-pointer"
+               >
+                  <span className="text-white font-tech text-xs">X</span>
+               </a>
                <button 
                  onClick={() => {
                    navigator.clipboard.writeText(window.location.href);
@@ -127,7 +152,7 @@ export default function BlogPostPage() {
                </button>
             </div>
           </div>
-          <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-brand-purple/20 blur-[40px] rounded-full group-hover:bg-brand-purple/30 transition-all" />
+          <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-brand-purple/20 blur-[40px] rounded-full group-hover:bg-brand-purple/30 transition-all" />
         </motion.div>
       </article>
 

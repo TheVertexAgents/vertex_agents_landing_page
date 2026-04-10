@@ -2,38 +2,42 @@
 
 import { motion } from "framer-motion";
 
+interface IconProps {
+  className?: string;
+}
+
 // Kraken logo
-const KrakenLogo = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+const KrakenLogo = ({ className }: IconProps) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-4 12c-.83 0-1.5-.67-1.5-1.5S7.17 14 8 14s1.5.67 1.5 1.5S8.83 17 8 17zm8 0c-.83 0-1.5-.67-1.5-1.5S15.17 14 16 14s1.5.67 1.5 1.5S16.83 17 16 17zm-4-3c-1.66 0-3-1.34-3-3h6c0 1.66-1.34 3-3 3z"/>
   </svg>
 );
 
 // Surge / ERC-8004 logo
-const SurgeLogo = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}>
+const SurgeLogo = ({ className }: IconProps) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
   </svg>
 );
 
 // Lablab.ai logo
-const LablabLogo = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}>
+const LablabLogo = ({ className }: IconProps) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/>
     <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/>
   </svg>
 );
 
 // Ethereum logo
-const EthereumLogo = (props: any) => (
-  <svg viewBox="0 0 320 512" fill="currentColor" {...props}>
+const EthereumLogo = ({ className }: IconProps) => (
+  <svg viewBox="0 0 320 512" fill="currentColor" className={className}>
     <path d="M311.9 260.8L160 353.6 8 260.8 160 0l151.9 260.8zM160 383.4L8 290.6 160 512l152-221.4-152 92.8z"/>
   </svg>
 );
 
 // Google (Genkit) logo
-const GoogleLogo = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+const GoogleLogo = ({ className }: IconProps) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" />
     <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
     <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
@@ -42,8 +46,8 @@ const GoogleLogo = (props: any) => (
 );
 
 // OpenServ logo
-const OpenServLogo = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}>
+const OpenServLogo = ({ className }: IconProps) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <circle cx="12" cy="12" r="10"/>
     <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
     <path d="M2 12h20"/>
@@ -76,8 +80,9 @@ export default function TechStack() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.05, duration: 0.3 }}
               className={`flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-white/5 border border-white/10 text-gray-300 font-tech text-xs tracking-wider cursor-default transition-all duration-300 group ${partner.color}`}
+              aria-label={`Partner: ${partner.name}`}
             >
-              <div className="text-gray-500 group-hover:text-inherit transition-colors flex items-center">
+              <div className="text-gray-500 group-hover:text-inherit transition-colors flex items-center" aria-hidden="true">
                 {partner.icon}
               </div>
               {partner.name}
