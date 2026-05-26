@@ -82,7 +82,7 @@ export default function AwardSection() {
 
             <div className="flex flex-wrap gap-4">
               <a
-                href="https://lablab.ai/event/ai-trading-agents-hackathon/winners"
+                href="https://lablab.ai/ai-hackathons/ai-trading-agents/#winners"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-3 px-6 py-3 bg-yellow-500 text-black font-tech text-[10px] tracking-[0.1em] rounded-sm hover:shadow-[0_0_30px_rgba(234,179,8,0.4)] transition-all"
