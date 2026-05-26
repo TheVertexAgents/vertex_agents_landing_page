@@ -88,6 +88,20 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <div className="z-10 flex flex-col items-center max-w-5xl">
+        {/* Winner Badge */}
+        <div className="mb-8 flex flex-col items-center animate-bounce">
+          <div className="flex items-center gap-3 rounded-full border border-yellow-500/40 bg-yellow-500/10 px-4 py-1.5 backdrop-blur-md shadow-[0_0_20px_rgba(234,179,8,0.2)]">
+            <span className="relative flex h-3 w-3">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-400 opacity-75"></span>
+              <span className="relative inline-flex h-3 w-3 rounded-full bg-yellow-500"></span>
+            </span>
+            <span className="font-tech text-[12px] font-bold text-yellow-500 tracking-[0.2em]">1ST PLACE WINNER</span>
+          </div>
+          <div className="mt-2 font-tech text-[10px] text-yellow-500/80 tracking-widest uppercase">
+            Lablab.ai AI Trading Agents Hackathon
+          </div>
+        </div>
+
         {/* Status Badge */}
         <div className="mb-1 flex items-center gap-2 rounded-full border border-brand-cyan/20 bg-brand-cyan/5 px-3 py-1 backdrop-blur-sm">
           <span className="relative flex h-2 w-2">

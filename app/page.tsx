@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
+import AwardSection from "./components/AwardSection";
 import ArchitectureFlow from "./components/ArchitectureFlow";
 import ProblemSection from "./components/ProblemSection";
 import HowItWorks from "./components/HowItWorks";
@@ -16,6 +17,7 @@ export default function Home() {
       <LoadingScreen />
       <Header />
       <HeroSection />
+      <AwardSection />
       <ProblemSection />
       <ArchitectureFlow />
       <HowItWorks />

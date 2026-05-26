@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, ExternalLink, FileText, BookOpen } from "lucide-react";
+import { Shield, ExternalLink, FileText, BookOpen, Trophy } from "lucide-react";
 import Link from "next/link";
 
 export default function Header() {
@@ -19,9 +19,12 @@ export default function Header() {
               <Shield className="w-4 h-4 text-brand-cyan group-hover:scale-110 transition-transform" />
               <div className="absolute inset-0 rounded-lg bg-brand-cyan/10 blur-[10px] opacity-0 group-hover:opacity-100 transition-opacity" />
            </div>
-           <div className="flex flex-col">
+           <div className="flex flex-col relative pr-6">
              <span className="font-tech text-xs tracking-[0.3em] text-white group-hover:text-brand-cyan transition-colors">SENTINEL</span>
              <span className="font-tech text-[8px] tracking-[0.1em] text-slate-500 group-hover:text-slate-300 transition-colors">BY_VERTEXAGENTS</span>
+             <div className="absolute top-0 right-0 h-full flex items-center">
+                <Trophy className="w-3 h-3 text-yellow-500 animate-pulse" />
+             </div>
            </div>
          </Link>
 
