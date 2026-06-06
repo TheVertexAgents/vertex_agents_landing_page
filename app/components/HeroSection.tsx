@@ -95,7 +95,7 @@ export default function HeroSection() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-400 opacity-75"></span>
               <span className="relative inline-flex h-3 w-3 rounded-full bg-yellow-500"></span>
             </span>
-            <span className="font-tech text-[12px] font-bold text-yellow-500 tracking-[0.2em]">1ST PLACE WINNER</span>
+            <span className="font-tech text-[12px] font-bold text-yellow-500 tracking-[0.2em]">SPECIAL AWARD WINNER</span>
           </div>
           <div className="mt-2 font-tech text-[10px] text-yellow-500/80 tracking-widest uppercase">
             Lablab.ai AI Trading Agents Hackathon
