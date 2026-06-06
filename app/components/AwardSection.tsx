@@ -59,20 +59,20 @@ export default function AwardSection() {
             </div>
 
             <h2 className="text-3xl md:text-5xl font-tech tracking-tight mb-6">
-              Best Trustless <br />
-              <span className="text-yellow-500">Trading Agent</span>
+              Best Compliance & <br />
+              <span className="text-yellow-500">Risk Guardrails</span>
             </h2>
 
             <p className="font-mono text-sm text-slate-400 mb-8 leading-relaxed max-w-lg">
-              Vertex Sentinel was awarded 1st Place at the Lablab.ai AI Trading Agents Hackathon.
+              Vertex Sentinel was awarded the Special Award at the Lablab.ai AI Trading Agents Hackathon.
               Our solution was recognized for pioneering the [fail-closed] security layer for autonomous
               agents, integrating ERC-8004 identity and on-chain risk guardrails.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full mb-10">
               <div className="p-4 rounded-lg bg-white/5 border border-white/10 hover:border-yellow-500/30 transition-colors">
-                <div className="font-tech text-[10px] text-yellow-500 mb-2 uppercase tracking-widest">Main Prize</div>
-                <div className="text-lg font-tech">$10,000 IN $SURGE TOKENS</div>
+                <div className="font-tech text-[10px] text-yellow-500 mb-2 uppercase tracking-widest">Special Award</div>
+                <div className="text-lg font-tech">$2,500 IN $SURGE TOKENS</div>
               </div>
               <div className="p-4 rounded-lg bg-white/5 border border-white/10 hover:border-yellow-500/30 transition-colors">
                 <div className="font-tech text-[10px] text-yellow-500 mb-2 uppercase tracking-widest">Host</div>
