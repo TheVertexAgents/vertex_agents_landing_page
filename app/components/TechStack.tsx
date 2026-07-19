@@ -59,8 +59,7 @@ const PARTNERS = [
   { name: "Surge", color: "hover:shadow-cyan-400/50 hover:border-cyan-400 hover:text-cyan-400", icon: <SurgeLogo className="w-5 h-5" /> },
   { name: "lablab.ai", color: "hover:shadow-green-400/50 hover:border-green-400 hover:text-green-400", icon: <LablabLogo className="w-5 h-5" /> },
   { name: "Ethereum", color: "hover:shadow-blue-400/50 hover:border-blue-400 hover:text-blue-400", icon: <EthereumLogo className="w-5 h-5" /> },
-  { name: "Google Genkit", color: "hover:shadow-yellow-400/50 hover:border-yellow-400 hover:text-yellow-400", icon: <GoogleLogo className="w-5 h-5" /> },
-  { name: "OpenServ", color: "hover:shadow-emerald-400/50 hover:border-emerald-400 hover:text-emerald-400", icon: <OpenServLogo className="w-5 h-5" /> },
+  { name: "Google Genkit", color: "hover:shadow-yellow-400/50 hover:border-yellow-400 hover:text-yellow-400", icon: <GoogleLogo className="w-5 h-5" /> }
 ];
 
 export default function TechStack() {
