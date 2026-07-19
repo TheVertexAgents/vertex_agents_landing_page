@@ -66,8 +66,8 @@ export default function ProblemSection() {
           </div>
           
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-tech tracking-[0.1em] text-white text-center uppercase leading-tight">
-            The Problem With <br className="hidden md:block"/>
-            <span className="text-red-500 text-glow glitch-hover inline-block mt-2">Autonomous Traders</span>
+          The Problem With <br className="hidden md:block"/>
+          <span className="text-red-500 text-glow glitch-hover inline-block mt-2">Autonomous Agents</span>
           </h2>
         </div>
 
