@@ -27,6 +27,12 @@ export default function Investors() {
             </p>
           </div>
           <div className="p-8 rounded-sm bg-black/60 border border-white/5">
+            <h3 className="text-sm font-tech tracking-wider text-white mb-3 uppercase">Long-term vision</h3>
+            <p className="font-mono text-xs text-gray-400 leading-relaxed">
+              We’re designing for a post-quantum future: quantum-safe execution verification, hardened identity, and long-horizon auditability—without breaking today’s fail-closed guarantees.
+            </p>
+          </div>
+          <div className="p-8 rounded-sm bg-black/60 border border-white/5">
             <h3 className="text-sm font-tech tracking-wider text-white mb-3 uppercase">Request</h3>
             <p className="font-mono text-xs text-gray-400 leading-relaxed mb-4">
               Use the form below or email us. We prioritize integrators over passive investors.
