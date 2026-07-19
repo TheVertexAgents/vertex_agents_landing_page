@@ -9,7 +9,7 @@ interface IconProps {
 // Kraken logo
 const KrakenLogo = ({ className }: IconProps) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-4 12c-.83 0-1.5-.67-1.5-1.5S7.17 14 8 14s1.5.67 1.5 1.5S8.83 17 8 17zm8 0c-.83 0-1.5-.67-1.5-1.5S15.17 14 16 14s1.5.67 1.5 1.5S16.83 17 16 17zm-4-3c-1.66 0-3-1.34-3-3h6c0 1.66-1.34 3-3 3z"/>
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-4 12c-.83 0-1.5-.67-1.5-1.5S7.17 14 8 14s1.5.67 1.5 1.5S8.83 17 8 17zm8 0c-.83 0-1.5-.67-1.5-1.5S15.17 14 16 14s1.5.67 1.5 1.5S16.83 17 8 17zm-4-3c-1.66 0-3-1.34-3-3h6c0 1.66-1.34 3-3 3z"/>
   </svg>
 );
 
@@ -45,21 +45,12 @@ const GoogleLogo = ({ className }: IconProps) => (
   </svg>
 );
 
-// OpenServ logo
-const OpenServLogo = ({ className }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <circle cx="12" cy="12" r="10"/>
-    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-    <path d="M2 12h20"/>
-  </svg>
-);
-
 const PARTNERS = [
   { name: "Kraken", color: "hover:shadow-purple-500/50 hover:border-purple-500 hover:text-purple-400", icon: <KrakenLogo className="w-5 h-5" /> },
   { name: "Surge", color: "hover:shadow-cyan-400/50 hover:border-cyan-400 hover:text-cyan-400", icon: <SurgeLogo className="w-5 h-5" /> },
   { name: "lablab.ai", color: "hover:shadow-green-400/50 hover:border-green-400 hover:text-green-400", icon: <LablabLogo className="w-5 h-5" /> },
   { name: "Ethereum", color: "hover:shadow-blue-400/50 hover:border-blue-400 hover:text-blue-400", icon: <EthereumLogo className="w-5 h-5" /> },
-  { name: "Google Genkit", color: "hover:shadow-yellow-400/50 hover:border-yellow-400 hover:text-yellow-400", icon: <GoogleLogo className="w-5 h-5" /> }
+  { name: "Google Genkit", color: "hover:shadow-yellow-400/50 hover:border-yellow-400 hover:text-yellow-400", icon: <GoogleLogo className="w-5 h-5" /> },
 ];
 
 export default function TechStack() {
