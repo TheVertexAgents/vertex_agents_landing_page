@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, ExternalLink, FileText, BookOpen, Trophy } from "lucide-react";
+import { Shield, ExternalLink, BookOpen, Trophy, Users } from "lucide-react";
 import Link from "next/link";
 
 export default function Header() {
   return (
-    <motion.header 
+    <motion.header
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -26,7 +26,7 @@ export default function Header() {
                 <Trophy className="w-3 h-3 text-yellow-500 animate-pulse" />
              </div>
            </div>
-         </Link>
+        </Link>
 
         {/* Global Connections (Right) */}
         <div className="flex items-center gap-4">
@@ -36,35 +36,33 @@ export default function Header() {
                 <span className="text-[10px] font-tech text-cyan-400 lg:tracking-widest uppercase">SYSTEM_ACTIVE</span>
              </div>
 
-             <Link
-              href="/#blog"
+            <Link
+              href="/features"
               className="group flex items-center gap-2 px-3 py-1 rounded-sm bg-brand-purple/5 border border-brand-purple/20 font-tech text-[9px] tracking-wider text-slate-300 transition-all hover:bg-brand-purple/10 hover:text-brand-purple hover:border-brand-purple/30"
             >
               <BookOpen className="w-3 h-3 opacity-50 group-hover:opacity-100" />
-              <span className="hidden sm:inline uppercase">SENTINEL_BLOG</span>
-              <span className="sm:hidden uppercase">BLOG</span>
+              <span className="hidden sm:inline uppercase">FEATURES</span>
+              <span className="sm:hidden uppercase">FEATURES</span>
+            </Link>
+
+            <Link
+              href="/early-access"
+              className="group flex items-center gap-2 px-3 py-1 rounded-sm bg-white/5 border border-white/10 font-tech text-[9px] tracking-wider text-slate-300 transition-all hover:bg-brand-cyan/10 hover:text-brand-cyan hover:border-brand-cyan/30"
+            >
+              <Users className="w-3 h-3 opacity-50 group-hover:opacity-100" />
+              <span className="hidden sm:inline uppercase">EARLY_ACCESS</span>
+              <span className="sm:hidden uppercase">ACCESS</span>
             </Link>
 
             <a
-              href="https://linktr.ee/vertexagents"
+              href="https://github.com/TheVertexAgents/vertex-sentinel"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 px-3 py-1 rounded-sm bg-white/5 border border-white/10 font-tech text-[9px] tracking-wider text-slate-300 transition-all hover:bg-brand-cyan/10 hover:text-brand-cyan hover:border-brand-cyan/30"
+              className="group flex items-center gap-2 px-3 py-1 rounded-sm bg-white/5 border border-white/10 font-tech text-[9px] tracking-wider text-slate-300 transition-all hover:bg-white/10 hover:text-white hover:border-white/30"
             >
               <ExternalLink className="w-3 h-3 opacity-50 group-hover:opacity-100" />
-              <span className="hidden sm:inline uppercase">EXPLORE_LINKS</span>
-              <span className="sm:hidden uppercase">LINKS</span>
-            </a>
-            
-            <a
-              href="/Whitepaper.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-2 px-3 py-1 rounded-sm bg-white/5 border border-white/10 font-tech text-[9px] tracking-wider text-slate-300 transition-all hover:bg-brand-cyan/10 hover:text-brand-cyan hover:border-brand-cyan/30"
-            >
-              <FileText className="w-3 h-3 opacity-50 group-hover:opacity-100" />
-              <span className="hidden sm:inline uppercase">WHITE_PAPER</span>
-              <span className="sm:hidden uppercase">PDF</span>
+              <span className="hidden sm:inline uppercase">GITHUB</span>
+              <span className="sm:hidden uppercase">CODE</span>
             </a>
         </div>
       </div>

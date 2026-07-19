@@ -52,7 +52,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-slate-400 text-sm md:text-sm leading-relaxed max-w-sm mb-6 font-tech uppercase">
-              Fail-closed, non-custodial, and on-chain risk management for AI trading agents.
+              Fail-closed execution layer for autonomous AI agents. Cryptographic intents, on-chain guardrails, zero private-key delegation.
             </p>
           </div>
 
@@ -64,15 +64,15 @@ export default function Footer() {
               </h3>
               <ul className="space-y-4">
                 <li>
-                  <Link href="/#how-it-works" className="text-slate-400 hover:text-brand-cyan transition-colors font-tech text-xs flex items-center gap-2 group">
+                  <Link href="/features" className="text-slate-400 hover:text-brand-cyan transition-colors font-tech text-xs flex items-center gap-2 group">
                     <ArrowUpRight className="w-3 h-3 text-brand-cyan/50 group-hover:text-brand-cyan" />
-                    HOW_IT_WORKS
+                    FEATURES
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#architecture" className="text-slate-400 hover:text-brand-cyan transition-colors font-tech text-xs flex items-center gap-2 group">
+                  <Link href="/how-it-works" className="text-slate-400 hover:text-brand-cyan transition-colors font-tech text-xs flex items-center gap-2 group">
                     <ArrowUpRight className="w-3 h-3 text-brand-cyan/50 group-hover:text-brand-cyan" />
-                    ARCHITECTURE
+                    HOW_IT_WORKS
                   </Link>
                 </li>
                 <li>

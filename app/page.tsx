@@ -1,11 +1,9 @@
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import AwardSection from "./components/AwardSection";
-import ArchitectureFlow from "./components/ArchitectureFlow";
 import ProblemSection from "./components/ProblemSection";
-import HowItWorks from "./components/HowItWorks";
+import ArchitectureFlow from "./components/ArchitectureFlow";
 import CodeShowcase from "./components/CodeShowcase";
-import ResourcesSection from "./components/ResourcesSection";
 import TechStack from "./components/TechStack";
 import BlogSection from "./components/BlogSection";
 import Footer from "./components/Footer";
@@ -20,9 +18,7 @@ export default function Home() {
       <AwardSection />
       <ProblemSection />
       <ArchitectureFlow />
-      <HowItWorks />
       <CodeShowcase />
-      <ResourcesSection />
       <TechStack />
       <BlogSection />
       <Footer />

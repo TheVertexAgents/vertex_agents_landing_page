@@ -12,17 +12,20 @@ function ScrambleText({ text, duration = 2000 }: { text: string; duration?: numb
   const scramble = useCallback(() => {
     let iteration = 0;
     const interval = setInterval(() => {
-      setDisplayText(prev => 
-        text.split("").map((char, index) => {
-          if (index < iteration) return text[index];
-          return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
-        }).join("")
+      setDisplayText(
+        text
+          .split("")
+          .map((char, index) => {
+            if (index < iteration) return text[index];
+            return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+          })
+          .join("")
       );
-      
+
       if (iteration >= text.length) clearInterval(interval);
       iteration += 1 / 3;
     }, duration / (text.length * 3));
-    
+
     return () => clearInterval(interval);
   }, [text, duration]);
 
@@ -124,13 +127,13 @@ export default function HeroSection() {
 
         {/* Subheadline with bracketed highlights */}
         <p className="mt-6 max-w-xl font-mono text-xs tracking-wider text-slate-400 sm:text-sm lg:text-base leading-relaxed">
-          Verifiable risk management for AI trading agents — <span className="font-mono text-brand-cyan text-glow">[fail-closed]</span>, <span className="text-white">non-custodial</span>, <span className="font-mono text-brand-purple text-glow">[on-chain]</span>.
+          Vertex Sentinel gives autonomous AI agents <span className="font-mono text-brand-cyan text-glow">[fail-closed]</span> execution: cryptographic intents, on-chain guardrails, and verifiable outcomes—<span className="text-white">no private-key delegation</span>, <span className="font-mono text-brand-purple text-glow">[no black-box behavior]</span>.
         </p>
 
         {/* CTA Buttons */}
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4 flex-wrap justify-center">
           <a
-            href="https://github.com/TheVertexAgents"
+            href="https://github.com/TheVertexAgents/vertex-sentinel"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-flex items-center justify-center overflow-hidden rounded-sm border border-brand-cyan/40 bg-brand-cyan/5 px-8 py-3.5 font-tech text-[10px] tracking-[0.2em] text-brand-cyan transition-all duration-300 hover:bg-brand-cyan hover:text-black hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] glitch-hover"
@@ -139,17 +142,15 @@ export default function HeroSection() {
             <span className="absolute top-0 right-0 h-1.5 w-1.5 border-t border-r border-brand-cyan" />
             <span className="absolute bottom-0 left-0 h-1.5 w-1.5 border-b border-l border-brand-cyan" />
             <span className="absolute bottom-0 right-0 h-1.5 w-1.5 border-b border-r border-brand-cyan" />
-            INITIATE_GITHUB
+            VIEW SDK
           </a>
           <a
-            href="https://linktr.ee/vertexagents"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:info.vertexagents@gmail.com"
             className="glass group relative flex items-center justify-center rounded-sm px-8 py-3.5 font-tech text-[10px] tracking-[0.2em] text-white transition-all hover:bg-white/10 hover:border-white/40 glitch-hover"
           >
              <span className="absolute top-0 left-0 h-1.5 w-1.5 border-t border-l border-white/40 opacity-0 group-hover:opacity-100 transition-opacity" />
              <span className="absolute bottom-0 right-0 h-1.5 w-1.5 border-b border-r border-white/40 opacity-0 group-hover:opacity-100 transition-opacity" />
-            EXPLORE_ECOSYSTEM
+            REQUEST EARLY ACCESS
           </a>
         </div>
       </div>

@@ -14,13 +14,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://sentinel.vertexagents.ai'),
-  title: "The Sentinel Layer | Verifiable Risk Management for AI",
-  description: "Fail-closed, non-custodial, and on-chain risk management for AI trading agents. Secure your autonomous capital with ERC-8004 and EIP-712 verifiable intents.",
-  keywords: ["AI Trading", "Blockchain Security", "ERC-8004", "DeFi Safety", "Autonomous Agents", "Risk Management", "Ethereum"],
+  title: "Vertex Sentinel | Fail-Closed Execution for AI Agents",
+  description: "Vertex Sentinel is the execution-risk layer for autonomous AI agents: EIP-712 intents, on-chain guardrails, and verifiable execution with zero private-key delegation.",
+  keywords: ["AI Agents", "Agent Security", "EIP-712", "ERC-8004", "Verifiable Execution", "Smart Contract Guardrails", "Non-Custodial Agents"],
   authors: [{ name: "Vertex Sentinel Team" }],
   openGraph: {
-    title: "The Sentinel Layer | Verifiable Risk Management for AI",
-    description: "Fail-closed, non-custodial, and on-chain risk management for AI trading agents.",
+    title: "Vertex Sentinel | Fail-Closed Execution for AI Agents",
+    description: "Cryptographic intents, on-chain guardrails, and verifiable execution for autonomous AI agents — no private-key delegation.",
     url: "https://sentinel.vertexagents.ai",
     siteName: "Vertex Sentinel",
     images: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         url: "/web-app-manifest-512x512.png",
         width: 512,
         height: 512,
-        alt: "Vertex Sentinel Logo",
+        alt: "Vertex Sentinel",
       },
     ],
     locale: "en_US",
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Sentinel Layer | Verifiable Risk Management for AI",
-    description: "Fail-closed, non-custodial, and on-chain risk management for AI trading agents.",
+    title: "Vertex Sentinel | Fail-Closed Execution for AI Agents",
+    description: "Execution-risk layer for autonomous AI agents: EIP-712, on-chain policy, and verifiable outcomes.",
     images: ["/web-app-manifest-512x512.png"],
     creator: "@TheVertexAgents",
   },
