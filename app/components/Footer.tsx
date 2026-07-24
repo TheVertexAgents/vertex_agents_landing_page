@@ -70,7 +70,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/how-it-works" className="text-slate-400 hover:text-brand-cyan transition-colors font-tech text-xs flex items-center gap-2 group">
+                  <Link href="/features" className="text-slate-400 hover:text-brand-cyan transition-colors font-tech text-xs flex items-center gap-2 group">
                     <ArrowUpRight className="w-3 h-3 text-brand-cyan/50 group-hover:text-brand-cyan" />
                     HOW_IT_WORKS
                   </Link>

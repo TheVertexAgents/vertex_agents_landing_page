@@ -1,0 +1,28 @@
+Week,Milestone,Task,Owner,Evidence,Status
+M1-L1,Live site + investor conversion,Verify production deploy of landing repo and confirm live URL,Asif,Deployed URL screenshot + hosting status,Gated
+M1-L2,Live site + investor conversion,Validate /investors and /early-access paths render and CTAs work,Asif,Page screenshots + link check,Gated
+M1-L3,Live site + investor conversion,Add lightweight conversion tracking or mailto capture as fallback,Asif,Config diff + sample submission log,Gated
+M1-L4,Live site + investor conversion,Run quick usability check and fix broken copy/links,Asif,Checklist + screenshot diff,Gated
+M2-L1,Social proof + audience validation,Extract 2 proof artifacts from investor docs for social posts,Asif,Post drafts + source links,Gated
+M2-L2,Social proof + audience validation,Publish first proof post and measure engagement,Asif,Post URL + timestamp,Gated
+M2-L3,Social proof + audience validation,Publish second proof post and compare engagement,Asif,Impressions + comments + CTA clicks,Gated
+M2-L4,Social proof + audience validation,Collect inquiries tied to proof posts,Asif,Inbound log + lead tags,Gated
+M1-L5,Live site + investor conversion,Instrument basic analytics if not yet done,Asif,Tracking ID + dashboard link,Gated
+M2-L5,Social proof + audience validation,Summarize engagement data and set next-week target,Asif,Short memo + target numbers,Gated
+M1-P1,Live site + investor conversion,Milestone review: evidence threshold met?,Asif,PASS or FAIL with 1-line reason,Gated
+M3-L1,Integrator conversations + LOI,Identify 5 candidate agent-platform teams,Asif,List + source channel,Gated
+M3-L2,Integrator conversations + LOI,Reach out to first 2 candidates with intro + proof link,Asif,Sent log + replies,Gated
+M3-L3,Integrator conversations + LOI,Run first validation conversation and capture notes,Asif,Interview notes + pricing reaction,Gated
+M3-L4,Integrator conversations + LOI,Run second validation conversation and refine pitch,Asif,Notes + objections list,Gated
+M3-L5,Integrator conversations + LOI,Draft lightweight LOI or pilot scope with 1 interested team,Asif,LOI draft or scope doc,Gated
+M3-P1,Integrator conversations + LOI,Milestone review: 1 pilot or LOI in progress?,Asif,PASS or FAIL with 1-line reason,Gated
+M4-L1,Investor package + demo,Assemble pitch deck from one-pager and proof artifacts,Asif,Deck draft + slide map,Gated
+M4-L2,Investor package + demo,Record 5-minute demo walkthrough or prepare live script,Asif,Recording or script,Gated
+M4-L3,Investor package + demo,Share package with 5 targeted contacts,Asif,Sent list + follow-up notes,Gated
+M4-L4,Investor package + demo,Collect feedback from at least 2 investors,Asif,Feedback log + NDA copies,Gated
+M4-P1,Investor package + demo,Milestone review: feedback received and actionable?,Asif,PASS or FAIL with 1-line reason,Gated
+M3-L6,Integrator conversations + LOI,Follow up on LOI/pilot and remove blockers,Asif,Follow-up log + blocker list,Gated
+M1-ADJ,Live site + investor conversion,Recover blocker if needed,Asif,Change request + fix evidence,Gated
+M2-ADJ,Social proof + audience validation,Recover blocker if needed,Asif,Change request + fix evidence,Gated
+M3-ADJ,Integrator conversations + LOI,Recover blocker if needed,Asif,Change request + fix evidence,Gated
+M4-ADJ,Investor package + demo,Recover blocker if needed,Asif,Change request + fix evidence,Gated

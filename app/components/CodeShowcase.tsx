@@ -11,74 +11,19 @@ const TABS = [
     id: "riskrouter",
     title: "RiskRouter.sol",
     language: "solidity",
-    code: `// src/contracts/RiskRouter.sol
-function authorizeTrade(TradeIntent calldata intent, bytes calldata signature) external {
-    // 1. Verify deadline
-    require(block.timestamp <= intent.deadline, "RiskRouter: Intent expired");
-    
-    // 2. Verify circuit breakers
-    uint256 currentVolume = agentVolume[intent.agentId];
-    require(currentVolume + intent.volume <= maxVolumePerInterval, "RiskRouter: Volume limit exceeded");
-    
-    // 3. Update state to prevent replay
-    agentVolume[intent.agentId] += intent.volume;
-    executedIntents[intent.id] = true;
-    
-    // 4. Verify signature (EIP-712)
-    address signer = _verifyIntentSignature(intent, signature);
-    require(signer == agentOwners[intent.agentId], "RiskRouter: Invalid signature");
-    
-    emit TradeAuthorized(intent.id, intent.agentId, intent.pair, intent.volume);
-}`
+    code: `// vertex-sentinel/contracts/RiskRouter.sol\nfunction submitTradeIntent(\n  TradeIntent calldata intent,\n  bytes calldata signature\n) external returns (bool approved, string memory reason) {\n  bytes32 digest = hashTradeIntent(intent);\n\n  if (paused()) {\n    emit TradeRejected(intent.agentId, digest, "Protocol Paused");\n    return (false, "Protocol Paused");\n  }\n\n  if (block.timestamp > intent.deadline) {\n    emit TradeRejected(intent.agentId, digest, "Intent Expired");\n    return (false, "Intent Expired");\n  }\n\n  if (intent.nonce != _intentNonces[intent.agentId]) {\n    emit TradeRejected(intent.agentId, digest, "Invalid Nonce");\n    return (false, "Invalid Nonce");\n  }\n\n  AgentRegistry.AgentRegistration memory reg = agentRegistry.getAgent(intent.agentId);\n  if (intent.agentWallet != reg.agentWallet) {\n    emit TradeRejected(intent.agentId, digest, "Agent Wallet Mismatch");\n    return (false, "Agent Wallet Mismatch");\n  }\n\n  address signer = digest.recover(signature);\n  if (signer != reg.agentWallet) {\n    emit TradeRejected(intent.agentId, digest, "Invalid Signature");\n    return (false, "Invalid Signature");\n  }\n\n  (approved, reason) = _validateRisk(intent.agentId, intent.amountUsdScaled);\n  if (!approved) {\n    emit TradeRejected(intent.agentId, digest, reason);\n    return (false, reason);\n  }\n\n  _intentNonces[intent.agentId]++;\n  _recordTrade(intent.agentId);\n\n  emit TradeAuthorized(\n    digest,\n    signer,\n    intent.pair,\n    intent.action,\n    intent.amountUsdScaled,\n    intent.maxSlippageBps\n  );\n  emit TradeApproved(intent.agentId, digest, intent.amountUsdScaled);\n  return (true, "");\n}`
   },
   {
     id: "agent_brain",
     title: "agent_brain.ts",
     language: "typescript",
-    code: `// src/logic/agent_brain.ts
-export async function signIntent(
-  wallet: Wallet,
-  intent: TradeIntent
-): Promise<string> {
-  const domain = {
-    name: 'SentinelRiskRouter',
-    version: '1',
-    chainId: await wallet.getChainId(),
-    verifyingContract: RISK_ROUTER_ADDRESS
-  };
-
-  const types = {
-    TradeIntent: [
-      { name: 'id', type: 'bytes32' },
-      { name: 'agentId', type: 'bytes32' },
-      { name: 'pair', type: 'address' },
-      { name: 'volume', type: 'uint256' },
-      { name: 'maxPrice', type: 'uint256' },
-      { name: 'deadline', type: 'uint256' }
-    ]
-  };
-
-  return await wallet.signTypedData(domain, types, intent);
-}`
+    code: `// vertex-sentinel/src/logic/agent_brain.ts\nasync function signIntent(intent: TradeIntent, privateKey: Hex): Promise<Authorization> {\n  const traceId = getTraceId();\n  const useCircle = process.env.USE_CIRCLE_WAAS === 'true';\n  const agentAddress = useCircle\n    ? process.env.AGENT_WALLET_ADDRESS as Hex\n    : privateKeyToAccount(privateKey).address;\n\n  await checkGeographicRestrictions();\n  await identityClient.isAgentRegistered(agentAddress);\n  const decision = await analyzeRisk(intent.pair, intent.amountUsdScaled);\n\n  const kraken = getKrakenService();\n  const ticker = await kraken.getTicker(intent.pair);\n  const realPrice = parseFloat(ticker.c[0]);\n\n  const checkpoint = await createSignedCheckpoint(getAgentMetadata(), decision, privateKey, config.chainId, currentPnL);\n\n  if (decision.action !== 'HOLD') {\n    const orderManager = new OrderManager(instrument);\n    const order = await orderManager.placeOrder({ ... });\n  }\n\n  return { intent, signature, traceId, decision, checkpointHash: checkpoint.checkpointHash };\n}`
   },
   {
     id: "types",
     title: "TradeIntent Type",
     language: "typescript",
-    code: `// src/logic/types.ts
-export interface TradeIntent {
-  id: string;             // Unique identifier for the intent
-  agentId: string;        // ID of the AI agent
-  pair: string;           // Token pair address
-  volume: bigint;         // Amount to trade
-  maxPrice: bigint;       // Max acceptable price (slippage protection)
-  deadline: bigint;       // UNIX expiration timestamp
-}
-
-export interface Authorization {
-  intent: TradeIntent;
-  signature: string;      // EIP-712 signature over the intent
-}`
+    code: `// vertex-sentinel/src/logic/types.ts\nexport interface TradeIntent {\n  id: string;\n  agentId: string;\n  pair: string;\n  volume: bigint;\n  maxPrice: bigint;\n  deadline: bigint;\n}\n\nexport interface Authorization {\n  intent: TradeIntent;\n  signature: string;\n  traceId?: string;\n  decision?: {\n    action: string;\n    riskScore: number;\n    reasoning: string;\n    breakdown: {\n      marketRisk: number;\n      portfolioRisk: number;\n      sentimentRisk: number;\n      manualPenalty: number;\n      aiScore: number;\n    };\n    pair: string;\n  };\n}`
   }
 ];
 
