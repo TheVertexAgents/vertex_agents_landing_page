@@ -17,7 +17,7 @@ export default function ResourcesSection() {
       title: "Interactive Pitch Deck",
       description: "Our vision for the future of AI agent security, hackathon goals, and the Kraken CLI / ERC-8004 integration roadmap.",
       icon: <Presentation className="w-6 h-6 text-amber-400" />,
-      link: "/pitch-deck.html",
+      link: "https://vertexagents.vercel.app/pitch-deck.html",
       type: "Presentation",
       color: "amber"
     }
